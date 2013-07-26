@@ -11,6 +11,7 @@ class postgis {
   }
 
   package { 'boxen/brews/postgis':
-    ensure => '2.0.3-boxen1'
+    ensure => '2.0.3-boxen1',
+    require => Package['boxen/brews/postgresql']
   }
 }
