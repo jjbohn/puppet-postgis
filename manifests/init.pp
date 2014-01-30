@@ -12,8 +12,14 @@ class postgis {
     before => Package['boxen/brews/postgis'],
   }
 
+  package { "numpy":
+    ensure => present,
+    provider => pip,
+    require => Class['python']
+  }
+
   package { 'boxen/brews/postgis':
     ensure => $version,
-    require => Package['boxen/brews/postgresql']
+    require => [Package['boxen/brews/postgresql'], Package['numpy']]
   }
 }
